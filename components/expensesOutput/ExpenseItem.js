@@ -3,7 +3,7 @@ import React from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { GlobalStyles } from '../../constants/styles'
 
-const ExpenseItem = ({ item, amount, date, id }) => {
+const ExpenseItem = ({ description, amount, date, id }) => {
     const navigation = useNavigation()
     const onExpensePress = () => {
         navigation.navigate('ManageExpenses', { expenseId: id });
@@ -13,7 +13,7 @@ const ExpenseItem = ({ item, amount, date, id }) => {
         <Pressable style={({ pressed }) => pressed && styles.pressed} android_ripple onPress={onExpensePress}>
             <View style={styles.expenseItem}>
                 <View>
-                    <Text style={[styles.description, styles.textBase]}>{item}</Text>
+                    <Text style={[styles.description, styles.textBase]}>{description}</Text>
                     <Text style={styles.textBase}>{new Date(date).toDateString()}</Text>
                 </View>
                 <View style={styles.amountContainer}>
