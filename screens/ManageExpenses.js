@@ -5,6 +5,7 @@ import Button from '../components/UI/Button'
 import { GlobalStyles } from '../constants/styles';
 import { ExpensesContext } from '../store/expense-context';
 import Form from '../components/ManageExpense/Form';
+import { storeExpense } from '../util/http';
 
 const ManageExpenses = ({ route, navigation }) => {
     const { expenseId } = route.params || {};
@@ -30,7 +31,8 @@ const ManageExpenses = ({ route, navigation }) => {
         if (expenseId) {
             updateExpense(expenseId, expenseData)
         } else {
-            addExpense(expenseData)
+            storeExpense(expenseData)
+            // addExpense(expenseData)
         }
         navigation.goBack()
     }
